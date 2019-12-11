@@ -1,0 +1,86 @@
+12/11/2019 10:57:45 PM	This log contains information about the import schema operation into project 'FsharpAdventureWorks' on computer '1GHWST2' by user 'krzysztofm'.
+12/11/2019 10:57:46 PM	Import of database schema has started.
+12/11/2019 10:58:06 PM	Gathering database credentials
+12/11/2019 10:58:06 PM	Gathering database options
+12/11/2019 10:58:06 PM	Gathering generic database scoped configuration option
+12/11/2019 10:58:06 PM	Gathering users
+12/11/2019 10:58:06 PM	Gathering roles
+12/11/2019 10:58:06 PM	Gathering application roles
+12/11/2019 10:58:06 PM	Gathering role memberships
+12/11/2019 10:58:06 PM	Gathering filegroups
+12/11/2019 10:58:06 PM	Gathering full-text catalogs
+12/11/2019 10:58:06 PM	Gathering assemblies
+12/11/2019 10:58:06 PM	Gathering certificates
+12/11/2019 10:58:06 PM	Gathering asymmetric keys
+12/11/2019 10:58:06 PM	Gathering symmetric keys
+12/11/2019 10:58:06 PM	Gathering encrypted symmetric keys
+12/11/2019 10:58:06 PM	Gathering schemas
+12/11/2019 10:58:06 PM	Gathering XML schema collections
+12/11/2019 10:58:06 PM	Gathering user-defined data types
+12/11/2019 10:58:07 PM	Gathering user-defined types
+12/11/2019 10:58:07 PM	Gathering table types
+12/11/2019 10:58:07 PM	Gathering unique keys for table types
+12/11/2019 10:58:07 PM	Gathering primary keys for table types
+12/11/2019 10:58:07 PM	Gathering indexes for table types
+12/11/2019 10:58:07 PM	Gathering check constraints for table types
+12/11/2019 10:58:07 PM	Gathering default constraints for table types
+12/11/2019 10:58:07 PM	Gathering partition functions
+12/11/2019 10:58:07 PM	Gathering partition schemes
+12/11/2019 10:58:07 PM	Gathering functions
+12/11/2019 10:58:07 PM	Gathering encrypted functions
+12/11/2019 10:58:07 PM	Gathering aggregates
+12/11/2019 10:58:07 PM	Gathering procedures
+12/11/2019 10:58:07 PM	Gathering encrypted procedures
+12/11/2019 10:58:07 PM	Gathering tables
+12/11/2019 10:58:07 PM	Gathering primary keys
+12/11/2019 10:58:07 PM	Gathering unique constraints
+12/11/2019 10:58:07 PM	Gathering foreign keys
+12/11/2019 10:58:07 PM	Gathering default constraints
+12/11/2019 10:58:07 PM	Gathering check constraints
+12/11/2019 10:58:08 PM	Gathering views
+12/11/2019 10:58:08 PM	Gathering encrypted views
+12/11/2019 10:58:08 PM	Gathering indexes
+12/11/2019 10:58:08 PM	Gathering statistics
+12/11/2019 10:58:08 PM	Gathering full-text index stoplists
+12/11/2019 10:58:08 PM	Gathering search property lists
+12/11/2019 10:58:08 PM	Gathering search properties
+12/11/2019 10:58:08 PM	Gathering full-text indexes
+12/11/2019 10:58:08 PM	Gathering column store indexes
+12/11/2019 10:58:08 PM	Gathering spatial indexes
+12/11/2019 10:58:08 PM	Gathering XML indexes
+12/11/2019 10:58:08 PM	Gathering Selective XML indexes
+12/11/2019 10:58:08 PM	Gathering encrypted triggers
+12/11/2019 10:58:08 PM	Gathering triggers
+12/11/2019 10:58:08 PM	Gathering encrypted and clr ddl triggers
+12/11/2019 10:58:08 PM	Gathering ddl triggers
+12/11/2019 10:58:08 PM	Gathering synonyms
+12/11/2019 10:58:08 PM	Gathering defaults
+12/11/2019 10:58:08 PM	Gathering data constraint uddt bindings
+12/11/2019 10:58:08 PM	Gathering rules
+12/11/2019 10:58:08 PM	Gathering data constraint uddt bindings
+12/11/2019 10:58:08 PM	Gathering message types
+12/11/2019 10:58:08 PM	Gathering queues
+12/11/2019 10:58:08 PM	Gathering contracts
+12/11/2019 10:58:08 PM	Gathering services
+12/11/2019 10:58:08 PM	Gathering event notifications
+12/11/2019 10:58:08 PM	Gathering remote service bindings
+12/11/2019 10:58:08 PM	Gathering broker priorities
+12/11/2019 10:58:08 PM	Gathering signatures
+12/11/2019 10:58:08 PM	Gathering data compression options
+12/11/2019 10:58:08 PM	Gathering sequence types
+12/11/2019 10:58:08 PM	Gathering security policies
+12/11/2019 10:58:08 PM	Gather column encryption keys
+12/11/2019 10:58:08 PM	Gathering column master keys
+12/11/2019 10:58:08 PM	Gathering external data sources
+12/11/2019 10:58:08 PM	Gathering external file formats
+12/11/2019 10:58:08 PM	Gathering external tables
+12/11/2019 10:58:08 PM	Gathering database permissions
+12/11/2019 10:58:08 PM	Gathering extended properties
+12/11/2019 10:58:09 PM	Gathering credentials
+12/11/2019 10:58:09 PM	Gathering logins
+12/11/2019 10:58:09 PM	Gathering server audits
+12/11/2019 10:58:11 PM	Scanning project for duplicate elements
+12/11/2019 10:58:14 PM	Finished duplicate element processing
+12/11/2019 10:58:52 PM	Finished importing database.
+12/11/2019 10:58:52 PM	A summary of the import was saved to the following location: C:\Dev\github\FsharpAdventCalendar2019\FsharpAdventureWorks\Import Schema Logs\FsharpAdventureWorks_20191211095745.log
+12/11/2019 10:58:52 PM	Click Finish to continue...
