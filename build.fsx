@@ -26,25 +26,31 @@ let build (projectDirectoryPair:string * string) =
         { p with Properties = [ ("DeployOnBuild", "false") ] } ) (buildDir + projectName + "/") "Build" (Seq.singleton project)
        |> Trace.logItems "DbBuild-Output: "
 
-let publish (projectDirectoryPair:string * string) =
+let publish env (projectDirectoryPair:string * string) =
     let project, projectName = projectDirectoryPair
     MSBuild.runRelease  (fun p ->
-        { p with Properties = [ ("DeployOnBuild", "true"); ("SqlPublishProfilePath","./Profiles/DEV.publish.xml") ] } ) (buildDir + projectName + "/") "Publish" (Seq.singleton project)
+        { p with Properties = [ ("DeployOnBuild", "true"); ("SqlPublishProfilePath","./Profiles/" + env + ".publish.xml") ] } ) (buildDir + projectName + "/") "Publish" (Seq.singleton project)
        |> Trace.logItems "DbBuild-Output: "
 
 // Targets
+
 Target.create "BuildDb" (fun _ -> 
 
-    !! "**/*.sqlproj" 
+    let db = Fake.Core.Environment.environVarOrDefault "db" "*"
+
+    !! (sprintf "**/%s.sqlproj" db)
     |> Seq.map (fun x -> (x, getProjectName x))
     |> Seq.iter build
 )
 
 Target.create "DeployDb" (fun _ -> 
 
-    !! "**/*.sqlproj"
+    let env = Fake.Core.Environment.environVarOrDefault "env" "Dev"
+    let db = Fake.Core.Environment.environVarOrDefault "db" "*"
+
+    !! (sprintf "**/%s.sqlproj" db)
     |> Seq.map (fun x -> (x, getProjectName x))
-    |> Seq.iter publish
+    |> Seq.iter (publish env)
 )
 
 "BuildDb"
