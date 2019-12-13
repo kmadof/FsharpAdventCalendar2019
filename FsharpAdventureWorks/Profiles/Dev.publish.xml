@@ -2,7 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
-    <TargetDatabaseName>AdventureWorks2017</TargetDatabaseName>
+    <TargetDatabaseName>FsharpAdventureWorks</TargetDatabaseName>
     <DeployScriptFileName>FsharpAdventureWorks.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=.;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</TargetConnectionString>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
