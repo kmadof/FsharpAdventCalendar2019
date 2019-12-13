@@ -7,10 +7,11 @@ nuget Fake.BuildServer.TeamCity
 nuget Fake.Core.Target"
 #load "./.fake/build.fsx/intellisense.fsx"
 
-open System.Linq
+open Fake.Core.TargetOperators
 open Fake.Core
 open Fake.IO.Globbing.Operators
 open Fake.DotNet
+open System.Linq
 
 // Properties
 let buildDir = "./build/"
@@ -25,6 +26,13 @@ let build (projectDirectoryPair:string * string) =
         { p with Properties = [ ("DeployOnBuild", "false") ] } ) (buildDir + projectName + "/") "Build" (Seq.singleton project)
        |> Trace.logItems "DbBuild-Output: "
 
+let publish (projectDirectoryPair:string * string) =
+    let project, projectName = projectDirectoryPair
+    MSBuild.runRelease  (fun p ->
+        { p with Properties = [ ("DeployOnBuild", "true"); ("SqlPublishProfilePath","./Profiles/DEV.publish.xml") ] } ) (buildDir + projectName + "/") "Publish" (Seq.singleton project)
+       |> Trace.logItems "DbBuild-Output: "
+
+// Targets
 Target.create "BuildDb" (fun _ -> 
 
     !! "**/*.sqlproj" 
@@ -32,5 +40,15 @@ Target.create "BuildDb" (fun _ ->
     |> Seq.iter build
 )
 
+Target.create "DeployDb" (fun _ -> 
+
+    !! "**/*.sqlproj"
+    |> Seq.map (fun x -> (x, getProjectName x))
+    |> Seq.iter publish
+)
+
+"BuildDb"
+    ==> "DeployDb"
+
 // start build
-Target.runOrDefault "BuildDb"
+Target.runOrDefault "DeployDb"
