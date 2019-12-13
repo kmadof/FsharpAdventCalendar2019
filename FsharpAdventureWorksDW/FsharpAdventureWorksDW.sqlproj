@@ -167,4 +167,8 @@
     <Build Include="Database Triggers\ddlDatabaseTriggerLog.sql" />
     <Build Include="Security\Permissions.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Profiles\Dev.publish.xml" />
+    <None Include="Profiles\Test.publish.xml" />
+  </ItemGroup>
 </Project>
