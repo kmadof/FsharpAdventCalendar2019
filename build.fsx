@@ -9,6 +9,7 @@ nuget Fake.Core.Target"
 
 open Fake.Core.TargetOperators
 open Fake.Core
+open Fake.IO
 open Fake.IO.Globbing.Operators
 open Fake.DotNet
 open System.Linq
@@ -53,7 +54,12 @@ Target.create "DeployDb" (fun _ ->
     |> Seq.iter (publish env)
 )
 
-"BuildDb"
+Target.create "Clean" (fun _ ->
+    Shell.cleanDir buildDir
+)
+
+"Clean"
+    ==> "BuildDb"
     ==> "DeployDb"
 
 // start build
