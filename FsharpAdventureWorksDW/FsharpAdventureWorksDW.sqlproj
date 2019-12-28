@@ -171,4 +171,11 @@
     <None Include="Profiles\Dev.publish.xml" />
     <None Include="Profiles\Test.publish.xml" />
   </ItemGroup>
+  <!--https://stackoverflow.com/questions/119271/copy-all-files-and-folders-using-msbuild-->
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <ANTLR Include="$(ProjectDir)Profiles\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ANTLR)" DestinationFolder="$(ProjectDir)..\build\$(ProjectName)" ContinueOnError="true" />
+  </Target>
 </Project>
