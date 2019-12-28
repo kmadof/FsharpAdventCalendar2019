@@ -26,6 +26,18 @@ steps:
   inputs:
     script: 'dotnet fake build -t BuildDb'
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'ls'
+    workingDirectory: '$(agent.builddirectory)'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'ls'
+    workingDirectory: '$(Build.Repository.LocalPath)'
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(agent.builddirectory)\build'
