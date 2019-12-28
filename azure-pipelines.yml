@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 steps:
 - script: echo Hello, world!
@@ -25,3 +25,28 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'dotnet fake build -t BuildDb'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'ls'
+    workingDirectory: '$(Build.Repository.LocalPath)'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'ls'
+    workingDirectory: '$(Build.Repository.LocalPath)\build'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.Repository.LocalPath)\build'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'fsharp-advent-calendar-2019'
+    publishLocation: 'Container'
