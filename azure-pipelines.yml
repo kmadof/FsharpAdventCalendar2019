@@ -25,3 +25,9 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'dotnet fake build -t BuildDb'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'fsharp-advent-calendar-2019'
+    publishLocation: 'Container'
