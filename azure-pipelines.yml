@@ -30,7 +30,21 @@ steps:
   inputs:
     SourceFolder: '$(Build.Repository.LocalPath)\build'
     Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\build'
+    CleanTargetFolder: true'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.Repository.LocalPath)'
+    Contents: 'build.fsx'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.Repository.LocalPath)\.config'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\.config'
     CleanTargetFolder: true'
 
 - task: PublishBuildArtifacts@1
