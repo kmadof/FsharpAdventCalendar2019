@@ -3,6 +3,7 @@ source ../FAKE/src/app/Fake.Sql.DacPac/bin/Debug
 source https://api.nuget.org/v3/index.json
 nuget Fake.IO.FileSystem
 nuget Fake.Dotnet.MSBuild
+nuget Fake.Sql.SqlPackage
 nuget Fake.BuildServer.TeamCity
 nuget Fake.Core.Target"
 #load "./.fake/build.fsx/intellisense.fsx"
@@ -31,7 +32,14 @@ let publish env (projectDirectoryPair:string * string) =
     let project, projectName = projectDirectoryPair
     MSBuild.runRelease  (fun p ->
         { p with Properties = [ ("DeployOnBuild", "true"); ("SqlPublishProfilePath","./Profiles/" + env + ".publish.xml") ] } ) (buildDir + projectName + "/") "Publish" (Seq.singleton project)
-       |> Trace.logItems "DbBuild-Output: "
+       |> Trace.logItems "DbDeploy-Output: "
+
+let publishWithSqlPackageModule env (projectDirectoryPair:string * string) =
+    let project, directory = projectDirectoryPair
+    let dacPacPath = sprintf "./build/%s/%s.dacpac" directory directory
+    let profile = sprintf "./%s/Profiles/%s.publish.xml" directory env
+
+    Fake.Sql.SqlPackage.deployDb (fun args -> { args  with Source = dacPacPath; Profile = profile })
 
 // Targets
 
@@ -51,7 +59,7 @@ Target.create "DeployDb" (fun _ ->
 
     !! (sprintf "**/%s.sqlproj" db)
     |> Seq.map (fun x -> (x, getProjectName x))
-    |> Seq.iter (publish env)
+    |> Seq.iter (publishWithSqlPackageModule env)
 )
 
 Target.create "Clean" (fun _ ->
