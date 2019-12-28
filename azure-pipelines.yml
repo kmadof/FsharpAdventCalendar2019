@@ -30,17 +30,17 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'ls'
-    workingDirectory: '$(agent.builddirectory)'
+    workingDirectory: '$(Build.Repository.LocalPath)'
 
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: 'ls'
-    workingDirectory: '$(Build.Repository.LocalPath)'
+    workingDirectory: '$(Build.Repository.LocalPath)\build'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(agent.builddirectory)\build'
+    SourceFolder: '$(Build.Repository.LocalPath)\build'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true'
